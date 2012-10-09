@@ -32,11 +32,11 @@ func LevelTraversal(root *TreeNode, size int) []*list.List {
 	flag.value = -1
 	queue[tail] = flag
 	tail++
-	ll := make([]*list.List, size)
+	ll := make([]*list.List, size << 1)
 	level := 0
 	tmp := list.New()
 	lastFlag := false
-	for ; head <= tail; {
+	for ; ; {
 		el := queue[head]
 		head++
 		if el.value == -1 {
@@ -66,10 +66,13 @@ func LevelTraversal(root *TreeNode, size int) []*list.List {
 }
 
 func main() {
-	arr := []int{1, 2, 3, 4, 5}
+	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}
 	root := BuildBST(arr, 0, len(arr) - 1)
 	ll := LevelTraversal(root, len(arr))
 	for _, l := range ll {
+		if l == nil {
+			continue
+		}
 		for e := l.Front(); e != nil; e = e.Next() {
 			fmt.Print(e.Value.(*TreeNode).value, " ")
 		}
