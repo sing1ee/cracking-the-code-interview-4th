@@ -4,6 +4,14 @@ import (
 	"fmt"
 )
 
+
+/*
+*(1)if p is on the left of root, q is on the right, then root is the first common ancestor
+*(2)if p and q are both one the left side, the deal with left sub tree recursively
+*
+*/
+
+
 type TreeNode struct {
 	left, right *TreeNode
 	value int
