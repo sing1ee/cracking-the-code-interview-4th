@@ -51,5 +51,5 @@ func main() {
 	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	root := BuildTestTree(arr, 0, len(arr) - 1)
 	path := make([]int, len(arr))
-	FindPaths(root, path, 5)
+	FindPaths(root, path, 33)
 }
