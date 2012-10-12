@@ -17,6 +17,17 @@ type ThreeStack struct {
 	buffer []*StackNode
 }
 
+func (stack *ThreeStack) PrintStack(size int) {
+	for i := 0; i < size; i++ {
+		if nil != stack.buffer[i] {
+			fmt.Print(stack.buffer[i].value, "-")
+		} else {
+			fmt.Print("nil", "-")
+		}
+	}
+	fmt.Println(stack.indexUsed)
+}
+
 func (stack *ThreeStack) Push(stackNum, value int) {
 	lastIndex := stack.stackPointer[stackNum]
 	stack.stackPointer[stackNum] = stack.indexUsed
@@ -29,7 +40,7 @@ func (stack *ThreeStack) Pop(stackNum int) int {
 	value := stack.buffer[lastIndex].value
 	stack.stackPointer[stackNum] = stack.buffer[lastIndex].previous
 	stack.buffer[lastIndex] = nil
-	stack.indexUsed--
+	// stack.indexUsed--
 	return value
 }
 
@@ -68,15 +79,18 @@ func Case2() {
 	stack.Push(1, 0)
 	stack.Push(1, 1)
 	stack.Push(1, 2)
+	stack.PrintStack(10)
 	fmt.Println(0, stack.Pop(0), 2)
 	fmt.Println(1, stack.Pop(1), 2)
+	stack.PrintStack(10)
 	stack.Push(2, 0)
-	stack.Push(2, 1)
-	stack.Push(2, 2)
-	fmt.Println(2, stack.Pop(2), 2)
-	fmt.Println(0, stack.Pop(0), 1)
-	stack.Push(1, 3)
-	fmt.Println(1, stack.Pop(1), 3)
+	stack.PrintStack(10)
+	// stack.Push(2, 1)
+	// stack.Push(2, 2)
+	// fmt.Println(2, stack.Pop(2), 2)
+	// fmt.Println(0, stack.Pop(0), 1)
+	// stack.Push(1, 3)
+	fmt.Println(1, stack.Pop(1), 1)
 }
 
 func main() {
