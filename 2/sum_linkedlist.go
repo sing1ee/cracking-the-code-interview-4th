@@ -67,7 +67,7 @@ func BuildLinedList(n int) *LinkedListNode {
 }
 
 func main() {
-	left := BuildLinedList(6)
+	left := BuildLinedList(9)
 	right := BuildLinedList(10)
 	sum := new(LinkedListNode)
 	sum.value = -1
