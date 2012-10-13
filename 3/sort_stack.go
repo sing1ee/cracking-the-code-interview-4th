@@ -62,14 +62,27 @@ func SortStack(stack *Stack, depth int) {
 	SortStack(stack, depth - 1)
 }
 
+func Sort(stack *Stack) *Stack {
+	tmpStack := &Stack{list.New()}
+	for ; !stack.IsEmpty(); {
+		tmp := stack.Pop().(int)
+		for ; !tmpStack.IsEmpty() && tmp > tmpStack.Peek().(int); {
+			stack.Push(tmpStack.Pop())
+		}
+		tmpStack.Push(tmp)
+	}
+	return tmpStack
+}
+
 func main() {
 	stack := &Stack{list.New()}
 	for i := 100; i > 0; i-- {
 		stack.Push(i)
 	}
-	SortStack(stack, 100)
-	for ; !stack.IsEmpty(); {
-		fmt.Println(stack.Pop().(int))
+	// SortStack(stack, 100)
+	tmp := Sort(stack)
+	for ; !tmp.IsEmpty(); {
+		fmt.Println(tmp.Pop().(int))
 	}
 }
 
