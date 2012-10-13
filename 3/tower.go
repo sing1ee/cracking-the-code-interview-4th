@@ -2,8 +2,38 @@ package main
 
 import (
 	"fmt"
-	"stack"
+	"container/list"
 )
+
+type Stack struct {
+	elements *list.List
+}
+
+func (stack *Stack) Elements() *list.List {
+	return stack.elements
+}
+
+func (stack *Stack) Push(value interface{}) {
+	stack.elements.PushBack(value)
+}
+
+func (stack *Stack) Pop() interface{} {
+	topEl := stack.elements.Back()
+	stack.elements.Remove(topEl)
+	return topEl.Value
+}
+
+func (stack *Stack) Peek() interface{} {
+	return stack.elements.Back().Value
+}
+
+func (stack *Stack) IsEmpty() bool {
+	return 0 == stack.Size()
+}
+
+func (stack *Stack) Size() int {
+	return stack.elements.Len()
+}
 
 type Tower struct {
 	disks *Stack
@@ -15,10 +45,10 @@ func (t *Tower) Index() int {
 }
 
 func (t *Tower) Add(d int) {
-	if !disks.IsEmpty() && disks.Peek().(int) <= d {
+	if !t.disks.IsEmpty() && t.disks.Peek().(int) <= d {
 		fmt.Println("error")
 	} else {
-		disks.Push(d)
+		t.disks.Push(d)
 	}
 }
 
@@ -47,7 +77,7 @@ func main() {
 	n := 5
 	towers := make([]*Tower, 5)
 	for i := 0; i < 5; i++ {
-		towers[i] = &Tower{new(Stack), i}
+		towers[i] = &Tower{&Stack{list.New()}, i}
 	}
 	for i := n - 1; i >= 0; i-- {
 		towers[0].Add(i)
