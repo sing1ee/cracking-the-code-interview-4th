@@ -4,6 +4,9 @@ import (
 	"fmt"
 )
 
+/*
+非连续子数组的最大和
+*/
 func MaxDisConSum(arr []int) int {
 	dp := make([]int, len(arr))
 	dp[0] = arr[0]
@@ -27,6 +30,6 @@ func MaxDisConSum(arr []int) int {
 }
 
 func main() {
-	arr := []int{1, 2, 3, 4, 5, 6}
+	arr := []int{1, 1, 1}
 	fmt.Println(MaxDisConSum(arr))
 }
