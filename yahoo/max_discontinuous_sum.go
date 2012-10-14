@@ -29,7 +29,27 @@ func MaxDisConSum(arr []int) int {
 	return max
 }
 
+func MaxDisConSum2(arr []int) int {
+	dp := make([]int, len(arr))
+	dp[0] = arr[0]
+	dp[1] = arr[1]
+	for i := 2; i < len(arr); i++ {
+		if dp[i - 2] + arr[i] > dp[i - 1] {
+			dp[i] = dp[i - 2] + arr[i]
+		} else {
+			dp[i] = dp[i - 1]
+		}
+	}
+	max := 0
+	for _, v := range dp {
+		if v > max {
+			max = v
+		}
+	}
+	return max
+}
+
 func main() {
-	arr := []int{1, 1, 1}
-	fmt.Println(MaxDisConSum(arr)) // ans: 2
+	arr := []int{6, 5, 4, 3, 2, 6, 10, 1, 5}
+	fmt.Println(MaxDisConSum(arr), MaxDisConSum2(arr)) // ans: 2
 }
