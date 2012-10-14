@@ -31,5 +31,5 @@ func MaxDisConSum(arr []int) int {
 
 func main() {
 	arr := []int{1, 1, 1}
-	fmt.Println(MaxDisConSum(arr))
+	fmt.Println(MaxDisConSum(arr)) // ans: 2
 }
