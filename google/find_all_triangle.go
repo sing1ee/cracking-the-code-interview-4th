@@ -7,5 +7,51 @@ package main
 
 import (
 	"fmt"
+	"time"
+	"math/rand"
 )
 
+func Qsort(arr[] int, left, right int) {
+	if left >= right {
+		return
+	}
+
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	index := left + r.Intn(right - left)
+	arr[left], arr[index] = arr[index], arr[left]
+	i, j := left + 1, right
+	for ; ; {
+		for ; i <= right && arr[i] < arr[left]; {
+			i++
+		}
+		for ; j >= 0 && arr[j] > arr[left]; {
+			j--
+		}
+		if j < i {
+			break
+		}
+		arr[i], arr[j] = arr[j], arr[i]
+	}
+	arr[left], arr[j] = arr[j], arr[left]
+	Qsort(arr, j + 1, right)
+	Qsort(arr, left, j - 1)
+}
+
+func FindAllTria(arr []int) {
+	Qsort(arr, 0, len(arr) - 1)
+	for i := len(arr) - 1; i >= 2; i-- {
+		for j := i - 1; j >= 1; j-- {
+			for k := j - 1; k >= 0; k-- {
+				if arr[k] + arr[j] <= arr[i] {
+					break;
+				}
+				fmt.Println(arr[k], arr[j], arr[i])
+			}
+		}
+	}
+}
+
+func main() {
+	arr := []int{3, 1, 4, 2, 5}
+	FindAllTria(arr)
+}
