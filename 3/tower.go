@@ -84,6 +84,3 @@ func main() {
 	}
 	towers[0].MoveDisks(n, towers[2], towers[1])
 }
-
-
-
