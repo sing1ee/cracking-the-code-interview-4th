@@ -39,9 +39,14 @@ func BuildTree(arr []int, left, right int) *TreeNode {
 
 func main() {
 	arr1 := []int{1, 2, 3, 4, 5, 6, 7}
-	arr2 := []int{1, 2, 3, 4, 5, 6, 7}
+	arr2 := []int{7, 6, 5, 4, 3, 2, 1}
+	arr3 := []int{7, 6, 5, 4, 3, 2, 1}
+	arr4 := []int{1, 2, 3, 4, 5, 6}
 	root1 := BuildTree(arr1, 0, len(arr1) - 1)
 	root2 := BuildTree(arr2, 0, len(arr2) - 1)
-
+	root3 := BuildTree(arr3, 0, len(arr3) - 1)
+	root4 := BuildTree(arr4, 0, len(arr4) - 1)
 	fmt.Println(root1.Equals(root2))
+	fmt.Println(root1.Equals(root3))
+	fmt.Println(root1.Equals(root4))
 }
