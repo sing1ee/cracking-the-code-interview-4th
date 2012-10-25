@@ -41,6 +41,9 @@ func FindAllTria(arr []int) {
 	Qsort(arr, 0, len(arr) - 1)
 	for i := len(arr) - 1; i >= 2; i-- {
 		for j := i - 1; j >= 1; j-- {
+			if arr[j] > arr[j - 1] < arr[i] {
+				break
+			}
 			for k := j - 1; k >= 0; k-- {
 				if arr[k] + arr[j] <= arr[i] {
 					break;
