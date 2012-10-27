@@ -12,7 +12,7 @@ func SetZero(matrix [][]int) {
 		for j := 0; j < len(matrix[0]); j++ {
 			if 0 == matrix[i][j] {
 				rows[i] = 1
-				cols[j] = 1s
+				cols[j] = 1
 			}
 		}
 	}
@@ -27,5 +27,9 @@ func SetZero(matrix [][]int) {
 }
 
 func main() {
-	
+	matrix := [][]int{{1, 0, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}}
+	SetZero(matrix)
+	for _, v := range matrix {
+		fmt.Println(v)
+	}
 }
