@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func ContinuousLs(arr []int) int {
@@ -22,7 +23,21 @@ func ContinuousLs(arr []int) int {
 	return max
 }
 
+func Cls(arr []int) int {
+	sumMax := int(math.MinInt32)
+	sum := 0
+	for i := 0; i < len(arr); i++ {
+		sum = sum + arr[i]
+		if sum > sumMax {
+			sumMax = sum
+		} else {
+			sum = 0
+		}
+	}
+	return sumMax
+}
+
 func main() {
-	arr := []int{0, 0, 0, 0, 0}
-	fmt.Println(ContinuousLs(arr))
+	arr := []int{1, 2, 3, -1}
+	fmt.Println(ContinuousLs(arr), Cls(arr))
 }
