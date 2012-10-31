@@ -16,7 +16,7 @@ func QuickSort(arr []int, left, right int) {
 	arr[left], arr[t] = arr[t], arr[left]
 	i, j := left + 1, right
 	for ; ; {
-		for ; i <= right && arr[i] < arr[left]; {
+		for ; i <= right && arr[i] <= arr[left]; { // this = is very important
 			i++
 		}
 		for ; arr[j] > arr[left]; {
